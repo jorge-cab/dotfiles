@@ -16,8 +16,16 @@ luafile $HOME/.config/nvim/plggn_settings/lua-line-config.lua
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
 
+" Lsp 
+luafile $HOME/.config/nvim/plggn_settings/lsp-installer.lua
+
+
 " Autocomplete settings
-luafile $HOME/.config/nvim/plggn_settings/coq_config.lua
+" Coq
+" luafile $HOME/.config/nvim/plggn_settings/coq_config.lua
+" Cmp
+set completeopt=menu,menuone,noselect,noinsert
+luafile $HOME/.config/nvim/plggn_settings/cmp_config.lua
 
 " Fuzzy Finder
 source $HOME/.config/nvim/plggn_settings/telescope_config.vim
