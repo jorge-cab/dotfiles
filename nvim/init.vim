@@ -38,7 +38,7 @@ lua require('nvim-autopairs').setup{}
 luafile $HOME/.config/nvim/plggn_settings/tree-sitter-config.lua
 
 " Lorem
-lua require'lorem-nvim'.setup()
+" lua require'lorem-nvim'.setup()
 
 " Buffer line
 luafile $HOME/.config/nvim/plggn_settings/buffer-config.lua

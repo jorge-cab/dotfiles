@@ -12,6 +12,8 @@ call plug#begin('~/local/share/nvim/plugged')
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
 
+  Plug 'lukas-reineke/indent-blankline.nvim'
+
   " Autocompletion
   " Coq
   " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -48,8 +50,8 @@ call plug#begin('~/local/share/nvim/plugged')
   Plug 'famiu/bufdelete.nvim'
 
   " Lorem
-  Plug 'derektata/lorem.nvim'
-  Plug 'vim-scripts/loremipsum'
+  " Plug 'derektata/lorem.nvim'
+  " Plug 'vim-scripts/loremipsum'
 
   " Buffer Line
   Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
