@@ -1,6 +1,5 @@
 -- init.lua
 
--- setup with all defaults
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
@@ -16,7 +15,6 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   update_cwd = false,
   view = {
     width = 30,
-    hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
     number = false,
@@ -38,9 +36,6 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
         none = "  ",
       },
     },
-    icons = {
-      webdev_colors = true,
-    },
   },
   hijack_directories = {
     enable = true,
@@ -53,7 +48,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   },
   ignore_ft_on_setup = {},
   system_open = {
-    cmd = "",
+    cmd = nil,
     args = {},
   },
   diagnostics = {
@@ -81,7 +76,6 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     change_dir = {
       enable = true,
       global = false,
-      restrict_above_cwd = false,
     },
     open_file = {
       quit_on_open = false,
@@ -107,7 +101,6 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
       all = false,
       config = false,
       copy_paste = false,
-      diagnostics = false,
       git = false,
       profile = false,
     },

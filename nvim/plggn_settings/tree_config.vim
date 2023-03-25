@@ -10,10 +10,10 @@ let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree 
 let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 let g:nvim_tree_show_icons = {
-    \ 'git': 0,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
+    \ 'git': 1,
+    \ 'folders': 0,
+    \ 'files': 0,
+    \ 'folder_arrows': 0,
     \ }
 "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 "1 by default, notice that if 'files' is 1, it will only display
@@ -24,8 +24,8 @@ let g:nvim_tree_show_icons = {
 " default will show icon by default if no icon is provided
 " default shows no icon by default
 let g:nvim_tree_icons = {
-    \ 'default': "",
-    \ 'symlink': "",
+    \ 'default': "",
+    \ 'symlink': "",
     \ 'git': {
     \   'unstaged': "✗",
     \   'staged': "✓",
@@ -58,8 +58,6 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 " NvimTreeResize
 " NvimTreeCollapse
 " NvimTreeCollapseKeepBuffers
-
-set termguicolors " this variable must be enabled for colors to be applied properly
 
 " a list of groups can be found at `:help nvim_tree_highlight`
 highlight NvimTreeFolderIcon guibg=blue

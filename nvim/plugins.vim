@@ -1,5 +1,11 @@
 " Plugins
 call plug#begin('~/local/share/nvim/plugged')
+
+  " Formatting
+  Plug 'sbdchd/neoformat'
+
+  " Smooth scrolling
+  Plug 'karb94/neoscroll.nvim'
 	
   " Colorscheme
 	Plug 'sainnhe/everforest'
@@ -11,8 +17,6 @@ call plug#begin('~/local/share/nvim/plugged')
   " Lsp
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
-
-  Plug 'lukas-reineke/indent-blankline.nvim'
 
   " Autocompletion
   " Coq
@@ -50,11 +54,12 @@ call plug#begin('~/local/share/nvim/plugged')
   Plug 'famiu/bufdelete.nvim'
 
   " Lorem
-  " Plug 'derektata/lorem.nvim'
-  " Plug 'vim-scripts/loremipsum'
+  Plug 'derektata/lorem.nvim'
+  Plug 'vim-scripts/loremipsum'
 
   " Buffer Line
   Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+   
   
 call plug#end()
 

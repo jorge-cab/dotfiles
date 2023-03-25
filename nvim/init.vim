@@ -43,3 +43,10 @@ luafile $HOME/.config/nvim/plggn_settings/tree-sitter-config.lua
 " Buffer line
 luafile $HOME/.config/nvim/plggn_settings/buffer-config.lua
 
+" Smooth scroll
+lua require('neoscroll').setup()
+
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
