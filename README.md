@@ -1,6 +1,6 @@
 # My dotfiles repository
 
-**This branch is in progress nord-theme**
+**This branch is in progress developing nord-theme**
 
 Welcome to my dotfiles repository! Here you'll find my personalized configurations for various tools and applications on the Arch Linux distribution. These dotfiles help me create a highly personalized, efficient, and visually appealing development environment.
 
