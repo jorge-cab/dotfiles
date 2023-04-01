@@ -52,4 +52,4 @@ ln -s /path/to/your/dotfiles/thunar ~/.config/Thunar
 
 These configurations are designed to be modular and easily customizable. Feel free to explore the files, understand how they work, and tweak them to suit your preferences. I encourage you to make these dotfiles your own and create a development environment that reflects your personality and work style.
 
-Enjoy! And if you have any questions or suggestions, please don't hesitate to reach out.
+Enjoy! And if you have any questions or suggestions, don't hesitate to reach out.
