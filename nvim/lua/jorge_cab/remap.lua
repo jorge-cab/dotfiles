@@ -26,10 +26,10 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- Alt + hjkl to resize windows
-vim.keymap.set("n", "<M-j>", ":resize -2<CR>")
-vim.keymap.set("n", "<M-k>", ":resize +2<CR>")
-vim.keymap.set("n", "<M-h>", ":vertical resize -2<CR>")
-vim.keymap.set("n", "<M-l>", ":vertical resize +2<CR>")
+vim.keymap.set("n", "<A-j>", ":resize -2<CR>")
+vim.keymap.set("n", "<A-k>", ":resize +2<CR>")
+vim.keymap.set("n", "<A-h>", ":vertical resize -2<CR>")
+vim.keymap.set("n", "<A-l>", ":vertical resize +2<CR>")
 
 -- Tab to move buffers
 vim.keymap.set("n", "<TAB>", ":bnext<CR>")
