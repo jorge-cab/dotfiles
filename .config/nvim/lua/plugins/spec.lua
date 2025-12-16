@@ -1,7 +1,8 @@
 return {
-    {"Shatur/neovim-ayu"},
+    { "Shatur/neovim-ayu" },
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {
