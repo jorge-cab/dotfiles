@@ -17,5 +17,9 @@ return {
         branch = 'master',
         lazy = false,
         build = ":TSUpdate"
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
     }
 }
