@@ -21,5 +21,9 @@ return {
     {
         'stevearc/conform.nvim',
         opts = {},
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
     }
 }
