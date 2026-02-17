@@ -38,5 +38,6 @@ screenshot() {
     echo "Saved: $filename"
 }
 
+eval "$(zoxide init zsh)"
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/depot_tools:$PATH"

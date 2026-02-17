@@ -17,5 +17,9 @@ return {
         branch = 'master',
         lazy = false,
         build = ":TSUpdate"
+    },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
     }
 }
