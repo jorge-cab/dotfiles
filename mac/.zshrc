@@ -40,4 +40,5 @@ screenshot() {
 
 eval "$(zoxide init zsh)"
 
-export PATH="$HOME/.local/bin:$HOME/depot_tools:$PATH"
+export PATH=$HOME/depot_tools:$PATH
+export PATH="$HOME/.local/bin:$PATH"
