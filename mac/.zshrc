@@ -38,5 +38,5 @@ screenshot() {
     echo "Saved: $filename"
 }
 
-
+export PATH=$HOME/depot_tools:$PATH
 export PATH="$HOME/.local/bin:$PATH"
