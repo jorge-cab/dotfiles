@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# jdtls-setup: Generate .classpath and .project files for Eclipse JDT Language Server
+# This script creates the necessary configuration files for jdtls to work with Java projects
+
+set -e
+
+# Colors for output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}=== JDTLS Project Setup ===${NC}\n"
+
+# Get current directory name as default project name
+current_dir=$(basename "$PWD")
+
+# Ask for project name
+read -p "Project name [${current_dir}]: " project_name
+project_name=${project_name:-$current_dir}
+
+# Ask for source directories
+echo -e "\n${YELLOW}Enter source directories (comma-separated, e.g., 'src,test')${NC}"
+read -p "Source directories [src]: " src_dirs
+src_dirs=${src_dirs:-src}
+
+# Ask for output directory
+read -p "Output/build directory [bin]: " output_dir
+output_dir=${output_dir:-bin}
+
+# Ask for additional filter patterns
+echo -e "\n${YELLOW}Default filters: node_modules, .git, __CREATED_BY_JAVA_LANGUAGE_SERVER__${NC}"
+read -p "Additional filter patterns (comma-separated, optional): " extra_filters
+
+# Build filter pattern
+filter_pattern="node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__"
+if [ -n "$extra_filters" ]; then
+    # Replace commas with pipes for regex
+    extra_filters=$(echo "$extra_filters" | sed 's/,/|/g')
+    filter_pattern="${filter_pattern}|${extra_filters}"
+fi
+
+# Generate .classpath file
+echo -e "\n${GREEN}Creating .classpath...${NC}"
+cat > .classpath << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+EOF
+
+# Add source directories
+IFS=',' read -ra DIRS <<< "$src_dirs"
+for dir in "${DIRS[@]}"; do
+    dir=$(echo "$dir" | xargs) # trim whitespace
+    echo "	<classpathentry kind=\"src\" path=\"$dir\"/>" >> .classpath
+done
+
+# Add JRE container and output path
+cat >> .classpath << EOF
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="$output_dir"/>
+</classpath>
+EOF
+
+# Generate .project file
+echo -e "${GREEN}Creating .project...${NC}"
+# Generate a unique filter ID based on timestamp
+filter_id=$(date +%s%3N)
+
+cat > .project << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>$project_name</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<filteredResources>
+		<filter>
+			<id>$filter_id</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+				<arguments>$filter_pattern</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
+</projectDescription>
+EOF
+
+echo -e "\n${GREEN}✓ Successfully created .classpath and .project${NC}"
+echo -e "${BLUE}Project: ${project_name}${NC}"
+echo -e "${BLUE}Source directories: ${src_dirs}${NC}"
+echo -e "${BLUE}Output directory: ${output_dir}${NC}"
+echo -e "\n${YELLOW}You can now open this project with jdtls-enabled editors (Neovim, VSCode, etc.)${NC}"
