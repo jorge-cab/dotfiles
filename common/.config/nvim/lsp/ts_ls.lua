@@ -15,7 +15,8 @@ return {
     -- How to detect the project root
     -- Files that share a root_dir will share the same LSP instance
     root_markers = {
-        { 'tsconfig.json', 'jsconfig.json' }, -- equal-priority group
+        'tsconfig.json',
+        'jsconfig.json', -- equal-priority group
         'package.json',
         '.git',
     },
@@ -28,7 +29,4 @@ return {
             },
         },
     },
-
-    -- Enable single-file support (no root markers found)
-    single_file_support = true,
 }
