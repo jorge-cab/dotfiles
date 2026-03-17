@@ -30,6 +30,11 @@ git_prompt_info() {
 # Prompt
 PROMPT='[%F{#F29668}%n%f%F{green}@%f%F{cyan}%m%f] %F{#D2A6FF}%~%f $(git_prompt_info)%F{yellow}->%f '
 
+# eza aliases (modern ls replacement)
+alias ls='eza --icons'
+alias ll='eza -lah --icons --git'
+alias la='eza -a --icons'
+alias lt='eza --tree --icons'
 
 # Screenshots
 screenshot() {
@@ -38,5 +43,8 @@ screenshot() {
     echo "Saved: $filename"
 }
 
+eval "$(zoxide init zsh --cmd cd)"
 
+# Add asdf shims to PATH (must come before other PATH additions)
+export PATH="$HOME/.asdf/shims:$PATH"
 export PATH="$HOME/.local/bin:$PATH"

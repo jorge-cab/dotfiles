@@ -1,6 +1,7 @@
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jdtls')
+vim.lsp.enable('clangd')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)

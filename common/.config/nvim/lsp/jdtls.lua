@@ -22,11 +22,34 @@ return {
     -- Files that share a root_dir will share the same LSP instance
     root_markers = {
         { 'pom.xml', 'build.gradle', 'build.gradle.kts' }, -- Maven or Gradle projects
-        { '.git', 'gradlew', 'mvnw' },
+        { '.git',    'gradlew',      'mvnw' },
+        { 'Makefile' },                                    -- Makefile-based projects
     },
 
     -- Enable single-file support (no root markers found)
     single_file_support = true,
+
+    -- Initialize project source paths dynamically based on root_dir
+    on_new_config = function(config, root_dir)
+        -- Check if this is a Makefile-based project (like craftinginterpreters)
+        local makefile = vim.fn.filereadable(root_dir .. '/Makefile')
+        local java_dir = vim.fn.isdirectory(root_dir .. '/java')
+        local has_maven = vim.fn.filereadable(root_dir .. '/pom.xml')
+        local has_gradle = vim.fn.filereadable(root_dir .. '/build.gradle') == 1 or
+            vim.fn.filereadable(root_dir .. '/build.gradle.kts') == 1
+
+        -- Only configure for Makefile projects without Maven/Gradle
+        if makefile == 1 and java_dir == 1 and has_maven == 0 and not has_gradle then
+            -- For Makefile projects with a 'java/' directory, set it as source path
+            -- Use absolute path for better compatibility
+            config.settings.java.project = config.settings.java.project or {}
+            config.settings.java.project.sourcePaths = { root_dir .. '/java' }
+            config.settings.java.project.outputPath = root_dir .. '/build/java'
+
+            -- Also set referenced libraries to empty array
+            config.settings.java.project.referencedLibraries = {}
+        end
+    end,
 
     -- Optional: basic settings for the server
     settings = {
@@ -78,6 +101,21 @@ return {
                     --     path = "/usr/lib/jvm/java-17-openjdk",
                     -- },
                 }
+            },
+            -- Project configuration (will be overridden by on_new_config for Makefile projects)
+            project = {
+                referencedLibraries = {},
+            },
+            -- Import settings
+            import = {
+                gradle = { enabled = true },
+                maven = { enabled = true },
+                exclusions = {
+                    "**/node_modules/**",
+                    "**/.metadata/**",
+                    "**/archetype-resources/**",
+                    "**/build/**",
+                },
             },
         },
     },
