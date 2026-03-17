@@ -42,3 +42,6 @@ eval "$(zoxide init zsh --cmd cd)"
 
 export PATH=$HOME/depot_tools:$PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# Meta-specific configs (symlinked, not published)
+[[ -f ~/.meta.zsh ]] && source ~/.meta.zsh
