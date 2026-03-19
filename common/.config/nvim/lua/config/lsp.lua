@@ -54,13 +54,26 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
--- Diagnostics
 vim.diagnostic.config({
-    -- Use the default configuration
-    -- virtual_lines = true
-    -- Alternatively, customize specific options
-    virtual_lines = {
-        -- Only show virtual line diagnostics for the current cursor line
-        current_line = true,
+    virtual_text = {
+        -- Prefix diagnostics with an icon
+        prefix = '●',
+        -- Only show diagnostics on the current line
+        source = "if_many",
+        -- Limit the width to prevent offscreen issues
+        format = function(diagnostic)
+            -- Truncate long messages
+            local max_width = 80
+            if #diagnostic.message > max_width then
+                return diagnostic.message:sub(1, max_width) .. "..."
+            end
+            return diagnostic.message
+        end,
     },
+    -- Show signs in the sign column
+    signs = true,
+    -- Update diagnostics while typing
+    update_in_insert = false,
+    -- Sort diagnostics by severity
+    severity_sort = true,
 })
