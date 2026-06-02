@@ -5,6 +5,7 @@ require("conform").setup({
         cpp = { "clang-format" },
         c = { "clang-format" },
         h = { "clang-format" },
+        cmake = { "gersemi" },
     },
     formatters = {
         prettier = {
