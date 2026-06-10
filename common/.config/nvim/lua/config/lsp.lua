@@ -49,7 +49,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function(args)
-        print("conform")
         require("conform").format({ bufnr = args.buf })
     end,
 })

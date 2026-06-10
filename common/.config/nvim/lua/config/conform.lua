@@ -13,7 +13,7 @@ require("conform").setup({
             require_cwd = true,
         },
         ["clang-format"] = {
-            prepend_args = { "--style={IndentWidth: 4}" },
+            prepend_args = { "--style=file" },
         },
     },
     format_on_save = {

@@ -1,7 +1,9 @@
 require('telescope').setup({
     defaults = {
         -- Search hidden files but still respect .gitignore
-        file_ignore_patterns = { "^.git/" },
+        -- Unanchored + escaped dot so it matches whether the finder emits
+        -- ".git/config" (rg/fd) or "./.git/config" (find fallback).
+        file_ignore_patterns = { "%.git/" },
     },
     pickers = {
         find_files = {
