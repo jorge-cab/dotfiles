@@ -9,6 +9,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         if not client then return end
 
+        -- Go to definition
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf, desc = 'Go to definition' })
+
         -- Autocomplete
         if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
             vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup' }

@@ -25,5 +25,26 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
+    },
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        event = "VeryLazy",
+        config = function()
+            require("bufferline").setup({
+                options = {
+                    diagnostics = "nvim_lsp",
+                    show_buffer_close_icons = true,
+                    show_close_icon = false,
+                },
+            })
+
+            local map = vim.keymap.set
+            map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+            map("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev buffer" })
+            map("n", "<leader>bd", "<Cmd>bdelete<CR>", { desc = "Delete buffer" })
+            map("n", "<leader>bp", "<Cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
+        end,
     }
 }
