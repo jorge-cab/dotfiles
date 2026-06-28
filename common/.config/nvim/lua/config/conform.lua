@@ -6,6 +6,9 @@ require("conform").setup({
         c = { "clang-format" },
         h = { "clang-format" },
         cmake = { "gersemi" },
+        sql = { "sql_formatter" },
+        mysql = { "sql_formatter" },
+        plsql = { "sql_formatter" },
     },
     formatters = {
         prettier = {

@@ -2,12 +2,20 @@ vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jdtls')
 vim.lsp.enable('clangd')
+vim.lsp.enable('sqls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
 
         if not client then return end
+
+        -- sqls' formatting is too opinionated; keep it for completion/hover only
+        -- and let conform's lsp_fallback skip it on save.
+        if client.name == 'sqls' then
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+        end
 
         -- Go to definition
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf, desc = 'Go to definition' })
