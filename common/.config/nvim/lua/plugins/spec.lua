@@ -27,6 +27,10 @@ return {
         main = "ibl",
     },
     {
+        "ThePrimeagen/99",
+        dependencies = { 'nvim-telescope/telescope.nvim' },
+    },
+    {
         'akinsho/bufferline.nvim',
         version = "*",
         dependencies = 'nvim-tree/nvim-web-devicons',
