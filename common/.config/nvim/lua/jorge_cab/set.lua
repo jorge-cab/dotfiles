@@ -12,4 +12,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 
+vim.opt.scrolloff = 10
+
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#5C6773" })
