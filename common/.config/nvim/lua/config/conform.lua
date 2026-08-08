@@ -5,6 +5,8 @@ require("conform").setup({
         cpp = { "clang-format" },
         c = { "clang-format" },
         h = { "clang-format" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
         cmake = { "gersemi" },
         sql = { "sql_formatter" },
         mysql = { "sql_formatter" },

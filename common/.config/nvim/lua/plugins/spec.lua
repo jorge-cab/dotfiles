@@ -2,7 +2,8 @@ return {
     { "Shatur/neovim-ayu" },
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.8',
+        -- Unpinned: 0.1.8 previewer calls nvim-treesitter master's `parsers.ft_to_lang`,
+        -- which main dropped. master uses vim.treesitter.language.get_lang instead.
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {
@@ -14,7 +15,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = 'master',
+        branch = 'main',
         lazy = false,
         build = ":TSUpdate"
     },
