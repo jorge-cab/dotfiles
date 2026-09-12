@@ -47,4 +47,9 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # Add asdf shims to PATH (must come before other PATH additions)
 export PATH="$HOME/.asdf/shims:$PATH"
+eval "$(fnm env --use-on-cd --shell zsh)"
 export PATH="$HOME/.local/bin:$PATH"
+
+# Android SDK
+export ANDROID_HOME="$HOME/Android/Sdk"
+path=("$ANDROID_HOME/cmdline-tools/latest/bin" "$ANDROID_HOME/platform-tools" "$ANDROID_HOME/emulator" $path)
