@@ -1,7 +1,8 @@
 -- nvim-treesitter `main` branch: no more `configs.setup`.
 -- Parsers are installed explicitly, highlighting is started per-buffer.
 require('nvim-treesitter').install({
-    'bash', 'c', 'cmake', 'cpp', 'java', 'javascript', 'json', 'lua',
+    'bash', 'c', 'cmake', 'cpp', 'go', 'gomod', 'gosum', 'gowork',
+    'java', 'javascript', 'json', 'lua',
     'markdown', 'markdown_inline', 'python', 'query', 'sql', 'tsx',
     'typescript', 'vim', 'vimdoc',
 })
