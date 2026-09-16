@@ -4,6 +4,7 @@ vim.lsp.enable('jdtls')
 vim.lsp.enable('clangd')
 vim.lsp.enable('sqls')
 vim.lsp.enable('neocmake')
+vim.lsp.enable('gopls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
@@ -14,6 +15,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- sqls' formatting is too opinionated; keep it for completion/hover only
         -- and let conform's lsp_fallback skip it on save.
         if client.name == 'sqls' then
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+        end
+
+        -- Prefer conform (goimports + gofumpt) over gopls formatting on save.
+        if client.name == 'gopls' then
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
         end
