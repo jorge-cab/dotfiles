@@ -4,6 +4,7 @@ vim.lsp.enable('jdtls')
 vim.lsp.enable('clangd')
 vim.lsp.enable('sqls')
 vim.lsp.enable('neocmake')
+vim.lsp.enable('gopls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
