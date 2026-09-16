@@ -11,6 +11,7 @@ require("conform").setup({
         sql = { "sql_formatter" },
         mysql = { "sql_formatter" },
         plsql = { "sql_formatter" },
+        go = { "gofmt" },
     },
     formatters = {
         prettier = {
